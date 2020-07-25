@@ -1,23 +1,40 @@
-
 import 'package:flutter/material.dart';
 
+class Cable with ChangeNotifier {
+  String _name;
+  bool _isOn;
+  Cable(this._name, this._isOn);
+
+  get name {
+    return _name;
+  }
+
+  set name(String name) {
+    _name = name;
+    notifyListeners();
+  }
+
+  get isOn {
+    return _isOn;
+  }
+
+  set isOn(bool isOn) {
+    _isOn = isOn;
+    print('CHANGE: $isOn');
+    notifyListeners();
+  }
+}
+
 class SistemaElectricoProvider with ChangeNotifier {
-  bool _corriente1 = false;
-  bool _corriente2 = true;
-  get corriente1 {
-    return _corriente1;
+  List<Cable> _cables = [];
+  
+  get cables {
+    return _cables;
   }
 
-  get corriente2 {
-    return _corriente2;
+  set cables(List<Cable> cables) {
+    _cables = cables;
+    notifyListeners();
   }
 
-  set corriente1(bool corriente) {
-    _corriente1 = corriente;
-    notifyListeners();
-  }
-  set corriente2(bool corriente) {
-    _corriente2 = corriente;
-    notifyListeners();
-  }
 }

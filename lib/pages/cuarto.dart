@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:room/widget/interruptor.dart';
+import 'package:room/Provider/sistema_electrico_provider.dart';
 
+import 'package:room/widget/foco.dart';
+import 'package:room/widget/interruptor.dart';
 import 'package:room/widget/pared.dart';
 import 'package:room/widget/puerta.dart';
 import 'package:room/widget/techo.dart';
@@ -15,10 +17,19 @@ class Cuarto extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Techo(),
-          Pared([Interruptor(1), Puerta()]),
-          Pared([Ventana()]),
-          Pared([Interruptor(2), Puerta()])
+          Techo([
+            Foco(Cable("a", false)),
+            Foco(Cable("a", false)),
+            // Foco(Cable("c", false)),
+            // Foco(Cable("d", false))
+          ]),
+          Pared(
+              [
+                Interruptor(Cable("a", false))
+              , Interruptor(Cable("b", false))
+              ]),
+          // Pared(
+          //     [Interruptor(Cable("c", false)), Interruptor(Cable("d", false))]),
         ],
       ),
     );

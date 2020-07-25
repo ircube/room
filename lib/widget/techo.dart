@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:room/widget/foco.dart';
 
 class Techo extends StatelessWidget {
+  final List<Widget> items;
+  Techo(this.items);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +13,7 @@ class Techo extends StatelessWidget {
       padding: EdgeInsets.all(10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[Foco(1), Foco(2)],
+        children: items,
       ),
     );
   }
